@@ -21,10 +21,10 @@ app.post('/exhub', async (req, res) => {
           authorization: token,
           "content-type": "application/json",
           cookie: `CF_Authorization=${cookie}`
-        }
+        },
+        timeout: 10000  
       }
     );
-
     res.json(response.data);
   } catch (e) {
     res.status(500).json({
@@ -33,6 +33,6 @@ app.post('/exhub', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('🚀 代理服务运行在 http://localhost:3000');
+app.listen(3000, '0.0.0.0', () => {
+  console.log('🚀 代理服务运行在 0.0.0.0:3000');
 });
